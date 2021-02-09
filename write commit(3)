@@ -1,0 +1,11 @@
+#include<stdio.h>
+int main() 
+{
+int h,d, b;
+float volume;
+printf("enter height, depth, breadth of tromboloid\n") ;
+scanf("%d%d%d",&h, &d, &b) ;
+volume=0.33*(h*d*b) +(d/b) ;
+printf("volume of tromboloid is%f\n", volume) ;
+return 0;
+}
