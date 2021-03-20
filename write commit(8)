@@ -9,7 +9,7 @@ fraction input(char a[])
 {
 	fraction x;
 	printf("enter the value of %s",a);
-	scanf("%d,%d",&x.num,&x.deno);
+	scanf("%d%d",&x.num,&x.deno);
 	return x;
 }
 
