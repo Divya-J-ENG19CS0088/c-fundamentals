@@ -4,35 +4,51 @@ struct fract
  int num;
  int deno;
 };
-  typedef struct fract fraction;
-  fraction input()
+ typedef struct fract fraction;
+fraction input(char a[])
 {
-  fraction a;
- printf(“Enter the numerator\n”);
-  scanf(“%d”,&a.deno);
-  return a;
+	fraction x;
+	printf("enter the value of %s",a);
+	scanf("%d,%d",&x.num,&x.deno);
+	return x;
 }
-  fraction sum(fraction a,fraction b)
+
+fraction simplify(fraction sum)
 {
-  fraction res;
- if(a.deno==b.deno)
-{
-  res.deno=a.deno;
-  res.num=a.num+b.num;
+	int gcd=find_gcd(sum.num,sum.deno);
+	sum.num=sum.num/gcd;
+	sum.deno=sum.deno/gcd;
+	return sum;
 }
-else
+fraction compute_sum(fraction nm1,fraction nm2)
 {
-  res.deno=a.deno*b.deno;
-  res.num=(a.num*b.deno)+(b.num*a.deno);
+	fraction sum;
+	sum.num=(nm1.num*nm2.deno)+(nm2.num+nm1.deno);
+	sum.deno=(nm1.deno*nm2.deno);
+	sum=simplify(sum);
+	return sum;
 }
-  return res;
-}
- int main()
+int find_gcd(int a,int b)
 {
-  fraction a,b,c;
-  a=input();
-  b=input();
-  c=sum(a,b);
-  printf(“The final sum is %d/%d”,c.num,c.deno);
-  return 0;
+
+	int temp;
+	while(a!=0)
+	{
+	temp=a;
+	a=b%a;
+	b=temp;
+	}
+return b;
+}
+void display_sum(fraction nm1,fraction nm2,fraction sum)
+{
+	printf("the sum of %d/%d and  %d/%d is %d/%d",nm1.num,nm1.deno,nm2.num,nm2.deno,sum.num,sum.deno);
+}
+  int main()
+{
+fraction nm1=input("a/b");
+fraction  nm2=input("c/d");
+fraction sum=compute_sum(nm1,nm2);
+display_sum(nm1,nm2,sum);
+return 0;
 }
