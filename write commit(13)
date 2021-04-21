@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <math.h>
+typedef struct Rectangle
+{
+float p1[2];
+float p2[2];
+float p3[2];
+}R_area;
+int input()
+{
+int n;
+printf("enter number of Rectangle ");
+scanf("%d",&n);
+return n;
+}
+R_area input_value(int n,R_area r[n])
+{
+for (int i =0 ; i < n ; i++)
+{
+printf("enter vertice of Rectangle ");
+scanf("%f%f",&r[i].p1[1],&r[i].p1[2]);
+scanf("%f%f",&r[i].p2[1],&r[i].p2[2]);
+scanf("%f%f",&r[i].p3[1],&r[i].p3[2]);
+ }
+ return r[n];
+}
+float compute(int n,R_area r[n],float ans[n]) 
+{
+float d1 , d2;
+for(int i =0; i < n;i++)
+{
+d1 = sqrt ( pow((r[i].p1[1] - r[i].p2[1]),2) + pow((r[i].p1[2] - r[i].p2[2]),2));
+d2 = sqrt ( pow((r[i].p1[1] - r[i].p3[1]),2) + pow((r[i].p1[2]- r[i].p3[2]),2));
+ans[i] = d1 * d2; 
+}
+return ans[n];
+}
+void display(int n,R_area r[n],float ans[n])
+{
+for(int i = 0;i<n;i++)
+{
+printf("Area of rectangle with vertices (%.2f,%.2f),(%.2f,%.2f) and (%.2f,%.2f) is %.2f\n",r[i].p1[1],r[i].p1[2],r[i].p2[1],r[i].p2[2],r[i].p3[1],r[i].p3[2],ans[i]);
+}
+}
+int main()
+{
+int n;
+n= input();
+R_area  r[n];
+float ans[n];
+r[n]=input_value(n,r);
+ans[n]= compute(n,r,ans);
+display(n,r,ans);
+}
