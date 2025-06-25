@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int height();
+int depth();
+int bre();
+int volume(int h, int d, int b);
+
+int main() {
+    int h, d, b, v;
+
+    h = height();
+    d = depth();
+    b = bre();
+    v = volume(h, d, b);
+
+    printf("Volume = %d\n", v);
+    return 0;
+}
+
+int height() {
+    int h;
+    printf("Enter the value of height (h): ");
+    scanf("%d", &h);
+    return h;
+}
+
+int depth() {
+    int d;
+    printf("Enter the value of depth (d): ");
+    scanf("%d", &d);
+    return d;
+}
+
+int bre() {
+    int b;
+    printf("Enter the value of breadth (b): ");
+    scanf("%d", &b);
+    return b;
+}
+
+int volume(int h, int d, int b) {
+    if (b == 0) {
+        printf("Error: Division by zero!\n");
+        return 0;
+    }
+
+    int v = ((h * d * b) + (d / b)) / 3;
+    return v;
+}
